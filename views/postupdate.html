@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Post Update</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+</head>
+<body class="container">
+	<form class="form-horizontal" id="event-poster" method="post">
+        <div class="form-group">
+	        <label for="post-update">Post Update</label>
+            <textarea id="post-update"rows="10" name="post-update" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-default">Post</button>
+        </div>
+	</form>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+        var live = {
+            init : function() {
+                console.log("setup");
+        		$("#event-poster").on("submit", function(event) {
+                    console.log(event);
+                    event.preventDefault();
+                    $.ajax({
+        				type: "PUT",
+        				url: "/api/post-update",
+        				data: {
+        					"update" : $("#post-update").val()
+        				},
+        				success: function () {
+        					
+        				}
+        			});
+                });
+        	}
+        };
+        
+        $(document).ready(function(){
+        	live.init();
+        });
+    </script>
+</body>
+</html>

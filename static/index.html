@@ -2,11 +2,38 @@
 <html lang="en">
 <head>
     <title>Realtime Demo</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
 </head>
 <body>
 	<h1>Realtime Demo</h1>
 	<ul id="live-updates">
 		
 	</ul>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+        var live = {
+            init : function() {
+        		var source = new EventSource("http://localhost:8081/api/updates");
+        		
+        		source.addEventListener("message", function(event) {
+        			var data = jQuery.parseJSON(event.data);
+        			
+        			live.addItem(data.update);
+        		}, false);
+        	},
+	
+			addItem : function(data) {
+				$(live.constructItem(data)).hide().prependTo("#live-updates").fadeIn(1000);
+			},
+	
+			constructItem : function(data) {
+				return "<li>" + data + "</li>";
+			}
+        };
+        
+        $(document).ready(function(){
+        	live.init();
+        });
+    </script>
 </body>
 </html>
