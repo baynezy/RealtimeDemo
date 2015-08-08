@@ -1,0 +1,16 @@
+{
+  "name": "realtime",
+  "version": "1.0.0",
+  "description": "An example of how to build a realtime app with Node.js",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baynezy/RealtimeDemo.git"
+  },
+  "author": "Simon Baynes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/baynezy/RealtimeDemo/issues"
+  },
+  "homepage": "https://github.com/baynezy/RealtimeDemo#readme"
+}
