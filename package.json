@@ -12,5 +12,8 @@
   "bugs": {
     "url": "https://github.com/baynezy/RealtimeDemo/issues"
   },
-  "homepage": "https://github.com/baynezy/RealtimeDemo#readme"
+  "homepage": "https://github.com/baynezy/RealtimeDemo#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
 }
