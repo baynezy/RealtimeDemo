@@ -1,6 +1,7 @@
 var express = require("express"),
 	mustacheExpress = require("mustache-express"),
 	dataChannel = require("./custom_modules/data-channel"),
+	eventStorage = require("./custom_modules/event-storage"),
 	bodyParser = require("body-parser"),
 	app = express();
 	
@@ -16,8 +17,13 @@ app.get("/api/post-update", function(req, res) {
 });
 
 app.put("/api/post-update", function(req, res) {
-	var json = JSON.stringify(req.body);
-	dataChannel.publish(json);
+	var json = req.body;
+	json.timestamp = Date.now();
+	
+	eventStorage.save(json).then(function(doc) {
+		dataChannel.publish(JSON.stringify(json));
+	});
+	
 	res.status(204).end();
 });
 

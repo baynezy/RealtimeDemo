@@ -1,5 +1,7 @@
 var config = {
-	redisChannel : "liveupdates"
+	redisChannel : "liveupdates",
+	mongoDatabase : "events",
+	mongoScoresCollection : "updates"
 };
 
 module.exports = config;

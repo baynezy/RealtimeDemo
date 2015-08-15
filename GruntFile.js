@@ -14,6 +14,28 @@ module.exports = function(grunt) {
 								
 								return "You must enter a Redis channel name!";
 							}
+						},
+						{
+							config: "config.mongoDatabase",
+							type: "input",
+							message: "What is the Mongo database name for live events?",
+							default: "events",
+							validate: function(value) {
+								if (value.trim().length > 0) return true;
+								
+								return "You must enter a Mongo database name!";
+							}
+						},
+						{
+							config: "config.mongoScoresCollection",
+							type: "input",
+							message: "What is the Mongo collection name for updates?",
+							default: "updates",
+							validate: function(value) {
+								if (value.trim().length > 0) return true;
+								
+								return "You must enter a Mongo collection name!";
+							}
 						}
 					]
 				}
@@ -25,7 +47,9 @@ module.exports = function(grunt) {
 	
 	grunt.registerTask("config", "Create config file", function() {
 		var contents =	'var config = {\n' +
-					'	redisChannel : "' + grunt.config("config.redisChannel") + '"\n' +
+					'	redisChannel : "' + grunt.config("config.redisChannel") + '",\n' +
+					'	mongoDatabase : "' + grunt.config("config.mongoDatabase") + '",\n' +
+					'	mongoScoresCollection : "' + grunt.config("config.mongoScoresCollection") + '"\n' +
 					'};\n\n' +
 					'module.exports = config;';
 		
