@@ -1,9 +1,10 @@
-var redis = require("redis");
+var redis = require("redis"),
+	config = require("./config");
 
 module.exports.subscribe = function(callback) {
 	var subscriber = redis.createClient();
 	
-	subscriber.subscribe("liveupdates");
+	subscriber.subscribe(config.redisChannel);
 	
 	subscriber.on("error", function(err){
 		console.log("Redis error: " + err);
@@ -15,5 +16,5 @@ module.exports.subscribe = function(callback) {
 module.exports.publish = function(data) {
 	var publisher = redis.createClient();
 	
-	publisher.publish("liveupdates", data);
+	publisher.publish(config.redisChannel, data);
 };
