@@ -22,10 +22,14 @@ app.put("/api/post-update", function(req, res) {
 	
 	eventStorage.save(json).then(function(doc) {
 		dataChannel.publish(JSON.stringify(json));
-	});
+	}, errorHandling);
 	
 	res.status(204).end();
 });
+
+function errorHandling(err) {
+	throw err;
+}
 
 var server = app.listen(8082, function() {
 	

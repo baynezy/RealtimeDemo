@@ -17,3 +17,21 @@ module.exports.save = function(data) {
 		
 	return deferred.promise;
 };
+
+module.exports.findEventsSince = function(lastEventId) {
+	var deferred = Q.defer();
+	
+	collection.find({
+		timestamp: {$gt: Number(lastEventId)}
+	})
+	.sort({timestamp: 1}, function(err, docs) {
+		if (err) {
+			deferred.reject(err);
+		}
+		else {
+			deferred.resolve(docs);
+		}
+	});
+	
+	return deferred.promise;
+};

@@ -16,9 +16,7 @@
         		var source = new EventSource("http://localhost:8081/api/updates");
         		
         		source.addEventListener("message", function(event) {
-        			var data = jQuery.parseJSON(event.data);
-        			
-        			live.addItem(data.update);
+					live.addItem(event.data);
         		}, false);
         	},
 	
