@@ -39,7 +39,7 @@ function replaySSEs(req, res) {
 		for (var index = 0; index < docs.length; index++) {
 			var doc = docs[index];
 			var messageEvent = new ServerEvent(doc.timestamp);
-			messageEvent.addData(doc.event);
+			messageEvent.addData(doc.update);
 			outputSSE(req, res, messageEvent.payload());
 		}
 	}, errorHandling);
