@@ -1,6 +1,8 @@
 # Realtime Demo
+This code is part of a 2 part blog series on building real-time web apps with Server-Sent Events.
 
-The blog write up for this [http://bayn.es/real-time-web-applications-with-server-sent-events-pt-1/](http://bayn.es/real-time-web-applications-with-server-sent-events-pt-1/)
+ - [Part 1](http://bayn.es/real-time-web-applications-with-server-sent-events-pt-1/)
+ - [Part 2](http://bayn.es/real-time-web-apps-with-server-sent-events-pt-2/)
 
 ## Installation
 
