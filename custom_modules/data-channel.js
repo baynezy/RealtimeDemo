@@ -2,7 +2,7 @@ var redis = require("redis"),
 	config = require("./config");
 
 module.exports.subscribe = function(callback) {
-	var subscriber = redis.createClient();
+	var subscriber = redis.createClient(6379,"redis");
 	
 	subscriber.subscribe(config.redisChannel);
 	
@@ -14,7 +14,7 @@ module.exports.subscribe = function(callback) {
 };
 
 module.exports.publish = function(data) {
-	var publisher = redis.createClient();
+	var publisher = redis.createClient(6379,"redis");
 	
 	publisher.publish(config.redisChannel, data);
 };

@@ -1,7 +1,7 @@
 var Q = require("q"),
 	config = require("./config"),
 	mongo = require("mongojs"),
-	db = mongo(config.mongoDatabase),
+	db = mongo("mongodb://mongo/" + config.mongoDatabase),
 	collection = db.collection(config.mongoScoresCollection);
 	
 module.exports.save = function(data) {

@@ -1,0 +1,18 @@
+# start with node 5 base image
+FROM node:5.0
+
+RUN groupadd -r nodejs && useradd -m -r -g nodejs nodejs
+
+USER root
+
+# Create an app directory (in the Docker container)
+RUN mkdir -p /usr/src/realtime
+WORKDIR /usr/src/realtime
+
+RUN npm install --production
+
+EXPOSE 8082
+
+USER nodejs
+
+CMD ["node", "post.js"]

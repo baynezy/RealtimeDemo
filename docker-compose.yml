@@ -1,0 +1,22 @@
+version: '3'
+services: 
+  realtime-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.rtp
+    ports: 
+     - 8081:8081
+    volumes: 
+     - .:/usr/src/realtime 
+  realtime-post:
+    build:
+      context: .
+      dockerfile: Dockerfile.ps
+    ports: 
+     - 8082:8082
+    volumes: 
+     - .:/usr/src/realtime
+  redis:
+    image: "redis:alpine"
+  mongo:
+    image: "mongo"
